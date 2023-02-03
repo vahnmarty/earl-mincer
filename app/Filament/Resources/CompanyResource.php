@@ -45,10 +45,8 @@ class CompanyResource extends Resource
                 Tables\Columns\TextColumn::make('id'),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('contact_name'),
-                Tables\Columns\TextColumn::make('contact_email'),
-                Tables\Columns\TextColumn::make('contact_phone'),
-                Tables\Columns\TextColumn::make('start_date')->dateTime('Y-m-d'),
-                Tables\Columns\TextColumn::make('end_date')->dateTime('Y-m-d'),
+                Tables\Columns\TextColumn::make('contact_email')->label('Email'),
+                Tables\Columns\TextColumn::make('contact_phone')->label('Phone'),
             ])
             ->filters([
                 //
