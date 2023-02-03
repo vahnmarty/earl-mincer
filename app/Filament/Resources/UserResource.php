@@ -54,8 +54,8 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('business_name'),
                 Tables\Columns\TextColumn::make('AKA')->label('AKA'),
                 Tables\Columns\TextColumn::make('email'),
-                Tables\Columns\TextColumn::make('start_at')->dateTime('Y-m-d'),
-                Tables\Columns\TextColumn::make('end_at')->dateTime('Y-m-d'),
+                // Tables\Columns\TextColumn::make('start_at')->dateTime('Y-m-d'),
+                // Tables\Columns\TextColumn::make('end_at')->dateTime('Y-m-d'),
                 Tables\Columns\ToggleColumn::make('super_user'),
             ])
             ->filters([
