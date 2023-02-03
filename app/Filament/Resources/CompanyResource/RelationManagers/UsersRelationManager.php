@@ -3,12 +3,13 @@
 namespace App\Filament\Resources\CompanyResource\RelationManagers;
 
 use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use App\Models\CompanyAccountType;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Resources\RelationManagers\RelationManager;
 
 class UsersRelationManager extends RelationManager
 {
@@ -23,6 +24,9 @@ class UsersRelationManager extends RelationManager
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('account_type')
+                    ->required()
+                    ->options(CompanyAccountType::get()->pluck('name', 'id'))
             ]);
     }
 
@@ -31,6 +35,11 @@ class UsersRelationManager extends RelationManager
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('account_type')
+                ->getStateUsing(function ($record) {
+                    $type = CompanyAccountType::find($record->account_type);
+                    return $type?->name;
+                }),
             ])
             ->filters([
                 //

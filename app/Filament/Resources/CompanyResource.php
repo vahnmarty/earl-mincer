@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\CompanyResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CompanyResource\RelationManagers;
+use App\Filament\Resources\CompanyResource\RelationManagers\UsersRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\CompaniesRelationManager;
 
 class CompanyResource extends Resource
@@ -63,7 +64,7 @@ class CompanyResource extends Resource
     public static function getRelations(): array
     {
         return [
-            
+            UsersRelationManager::class
         ];
     }
     
