@@ -27,14 +27,20 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\TextInput::make('business_name')->required(),
-                Forms\Components\TextInput::make('AKA')->label('AKA (Alias)')->required(),
-                Forms\Components\TextInput::make('email')->email()->required(),
-                Forms\Components\DatePicker::make('start_at')->required(),
-                Forms\Components\DatePicker::make('end_at')->required(),
+                Forms\Components\TextInput::make('AKA')->label('AKA (Alias)'),
+                Forms\Components\DatePicker::make('start_at')->required()->default(date('Y-m-d')),
+                Forms\Components\DatePicker::make('end_at')->required()->default(date('Y-m-d')),
                 Forms\Components\Select::make('companies')
                 ->multiple()
                 ->preload()
-                ->relationship('companies', 'name')
+                ->relationship('companies', 'name'),
+                Forms\Components\Fieldset::make('Login')
+                    ->label("User's Login Credentials")
+                    ->columns(3)
+                    ->schema([
+                        Forms\Components\TextInput::make('email')->email()->required(),
+                        Forms\Components\TextInput::make('password')->required()->hiddenOn('edit'),
+                    ])
             ]);
     }
 
