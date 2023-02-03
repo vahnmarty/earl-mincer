@@ -34,6 +34,7 @@ class UserResource extends Resource
                 ->multiple()
                 ->preload()
                 ->relationship('companies', 'name'),
+
                 Forms\Components\Fieldset::make('Login')
                     ->label("User's Login Credentials")
                     ->columns(3)
@@ -55,16 +56,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('email'),
                 Tables\Columns\TextColumn::make('start_at')->dateTime('Y-m-d'),
                 Tables\Columns\TextColumn::make('end_at')->dateTime('Y-m-d'),
-                Tables\Columns\IconColumn::make('super_user')
-                    ->options([
-                        'heroicon-o-x-circle' => 0,
-                        'heroicon-o-check-circle' => 1,
-                    ])
-                    ->colors([
-                        'secondary',
-                        'danger' => 0,
-                        'success' => 1,
-                    ])
+                Tables\Columns\ToggleColumn::make('super_user'),
             ])
             ->filters([
                 //
