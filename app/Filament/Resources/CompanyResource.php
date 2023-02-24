@@ -14,12 +14,17 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CompanyResource\RelationManagers;
 use App\Filament\Resources\CompanyResource\RelationManagers\UsersRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\CompaniesRelationManager;
+use App\Filament\Resources\CompanyResource\RelationManagers\CompanyAccountTypesRelationManager;
+
+
 
 class CompanyResource extends Resource
 {
     protected static ?string $model = Company::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
+    protected static ?string $navigationGroup = 'Companies';
+
 
     public static function form(Form $form): Form
     {
@@ -32,6 +37,10 @@ class CompanyResource extends Resource
                 Forms\Components\TextInput::make('contact_email')->email()->required(),
                 Forms\Components\TextInput::make('contact_phone')->required(),
                 Forms\Components\TextInput::make('response_email'),
+                Forms\Components\Select::make('type')
+                    ->preload()
+                    ->relationship('companyAccountTypes', 'name')
+                    ->label("Type"),
                 Forms\Components\DatePicker::make('start_date'),
                 Forms\Components\DatePicker::make('end_date'),
                 Forms\Components\Toggle::make('approval_email_to_payee')->inline(false)
@@ -62,7 +71,8 @@ class CompanyResource extends Resource
     public static function getRelations(): array
     {
         return [
-            UsersRelationManager::class
+            UsersRelationManager::class,
+            CompanyAccountTypesRelationManager::class
         ];
     }
     
