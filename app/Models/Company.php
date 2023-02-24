@@ -16,9 +16,9 @@ class Company extends Model
         return $this->belongsToMany(User::class, 'company_user')->withPivot('account_type');;
     }
 
-    public function companyAccountTypes()
+    public function accountType()
     {
-        return $this->belongsToMany(companyAccountType::class, 'company_user');
+        return $this->belongsTo(CompanyAccountType::class);
     }
 
 }

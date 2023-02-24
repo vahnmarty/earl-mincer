@@ -37,9 +37,9 @@ class CompanyResource extends Resource
                 Forms\Components\TextInput::make('contact_email')->email()->required(),
                 Forms\Components\TextInput::make('contact_phone')->required(),
                 Forms\Components\TextInput::make('response_email'),
-                Forms\Components\Select::make('type')
+                Forms\Components\Select::make('account_type_id')
                     ->preload()
-                    ->relationship('companyAccountTypes', 'name')
+                    ->relationship('accountType', 'name')
                     ->label("Type"),
                 Forms\Components\DatePicker::make('start_date'),
                 Forms\Components\DatePicker::make('end_date'),
@@ -72,7 +72,6 @@ class CompanyResource extends Resource
     {
         return [
             UsersRelationManager::class,
-            CompanyAccountTypesRelationManager::class
         ];
     }
     
