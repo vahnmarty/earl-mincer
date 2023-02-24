@@ -18,7 +18,7 @@ class Company extends Model
 
     public function accountType()
     {
-        return $this->belongsTo(CompanyAccountType::class);
+        return $this->belongsTo(CompanyAccountType::class, 'account_type');
     }
 
 }

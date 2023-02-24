@@ -15,7 +15,6 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('account_type_id')->nullable();
             $table->string('name')->unique();
             $table->string('short_name')->nullable();
             $table->string('contact_name')->nullable();
