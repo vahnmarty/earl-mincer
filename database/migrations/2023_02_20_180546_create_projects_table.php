@@ -30,10 +30,13 @@ return new class extends Migration
             $table->string('Note')->nullable();
             $table->bigInteger('project_status_id')->unsigned();
             $table->foreign('project_status_id')->references('id')->on('project_status_types')->onDelete('cascade');
-            $table->bigInteger('setter_id')->unsigned();
+            $table->bigInteger('setter_id')->nullable()->unsigned();
             $table->foreign('setter_id')->references('id')->on('users')->onDelete('cascade');
-            $table->bigInteger('closer_id')->unsigned();
+            $table->bigInteger('closer_id')->nullable()->unsigned();
             $table->foreign('closer_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamp('start_at')->nullable();
+            $table->timestamp('end_at')->nullable();
+            
             $table->timestamps();
         });
     }

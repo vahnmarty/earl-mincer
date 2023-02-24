@@ -9,8 +9,10 @@ class Project extends Model
 {
     use HasFactory;
 
-    public function projectStatusTypes()
+    protected $guarded = [];
+
+    public function type()
     {
-        return $this->belongsToMany(ProjectStatusType::class, 'company_user');
+        return $this->belongsTo(ProjectStatusType::class, 'project_status_id');
     }    
 }

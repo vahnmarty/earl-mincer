@@ -43,18 +43,18 @@ class ProjectResource extends Resource
                 ->label("Details")
                 ->columns(5)
                 ->schema([    
-                    Forms\Components\TextInput::make('system_size')->required()->label("System Size"),
-                    Forms\Components\TextInput::make('EPC_project_id')->label("EPC Project ID"),
-                    Forms\Components\TextInput::make('CRM_project_id')->label("CRM Project ID"),
-                    Forms\Components\TextInput::make('NPPW')->required()->label("NPPW"),
-                    Forms\Components\TextInput::make('loan_amount')->label("Loan Amount"),
+                    Forms\Components\TextInput::make('system_size')->required()->label("System Size")->numeric(),
+                    Forms\Components\TextInput::make('EPC_project_id')->label("EPC Project ID")->numeric(),
+                    Forms\Components\TextInput::make('CRM_project_id')->label("CRM Project ID")->numeric(),
+                    Forms\Components\TextInput::make('NPPW')->required()->label("NPPW")->numeric(),
+                    Forms\Components\TextInput::make('loan_amount')->label("Loan Amount")->numeric(),
                 ]),
             Forms\Components\TextInput::make('Note'),
             Forms\Components\DatePicker::make('start_at')->required()->default(date('Y-m-d')),
             Forms\Components\DatePicker::make('end_at')->required()->default(date('Y-m-d')),
-            Forms\Components\Select::make('status')
+            Forms\Components\Select::make('project_status_id')
                 ->preload()
-                ->relationship('projectStatusTypes', 'name')
+                ->relationship('type', 'name')
                 ->label("Status"),
         ]);
     }
@@ -79,7 +79,7 @@ class ProjectResource extends Resource
     public static function getRelations(): array
     {
         return [
-            ProjectStatusTypesRelationManager::class
+            
         ];
     }
     
