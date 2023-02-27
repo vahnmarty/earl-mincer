@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CompPlanResource\Pages;
-use App\Filament\Resources\CompPlanResource\RelationManagers;
-use App\Models\CompPlan;
 use Filament\Forms;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
+use App\Models\CompPlan;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\CompPlanResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\CompPlanResource\RelationManagers;
+use App\Filament\Resources\CompanyResource\RelationManagers\CompPlansRelationManager;
 
 class CompPlanResource extends Resource
 {
@@ -97,7 +98,7 @@ class CompPlanResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            
         ];
     }
     

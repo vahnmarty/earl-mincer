@@ -21,4 +21,9 @@ class Company extends Model
         return $this->belongsTo(CompanyAccountType::class, 'account_type');
     }
 
+    public function compPlans()
+    {
+        return $this->hasMany(CompPlan::class);
+    }
+
 }

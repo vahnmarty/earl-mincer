@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\CompanyResource\RelationManagers;
 use App\Filament\Resources\CompanyResource\RelationManagers\UsersRelationManager;
 use App\Filament\Resources\UserResource\RelationManagers\CompaniesRelationManager;
+use App\Filament\Resources\CompanyResource\RelationManagers\CompPlansRelationManager;
 use App\Filament\Resources\CompanyResource\RelationManagers\CompanyAccountTypesRelationManager;
 
 
@@ -72,6 +73,7 @@ class CompanyResource extends Resource
     {
         return [
             UsersRelationManager::class,
+            CompPlansRelationManager::class
         ];
     }
     
