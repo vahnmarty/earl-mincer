@@ -68,13 +68,17 @@ class CompPlanResource extends Resource
                 Tables\Columns\TextColumn::make('company.name'),
                 Tables\Columns\TextColumn::make('name'),
                 Tables\Columns\TextColumn::make('setter_percent')
+                    ->label('Setter %')
                     ->formatStateUsing(fn ($state): string => number_format($state, 1). "%"),
                 Tables\Columns\TextColumn::make('setter_per_watt')
-                    ->formatStateUsing(fn ($state): string => number_format($state, 1). "%"),
+                    ->label('S/W')
+                    ->formatStateUsing(fn ($state): string => number_format($state, 1)),
                 Tables\Columns\TextColumn::make('M1_percent')
+                    ->label('M1 %')
                     ->formatStateUsing(fn ($state): string => number_format($state, 1). "%"),
                 Tables\Columns\TextColumn::make('M1_max_payment')
-                    ->formatStateUsing(fn ($state): string => number_format($state, 1). "%"),
+                    ->label('M1 Max')
+                    ->formatStateUsing(fn ($state): string => number_format($state, 2)),
                 // Tables\Columns\TextColumn::make('start_at')->dateTime('Y-m-d'),
                 // Tables\Columns\TextColumn::make('end_at')->dateTime('Y-m-d'),
                 Tables\Columns\ToggleColumn::make('active'),
