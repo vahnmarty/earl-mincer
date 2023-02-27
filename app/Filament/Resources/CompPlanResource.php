@@ -31,24 +31,24 @@ class CompPlanResource extends Resource
             Forms\Components\TextInput::make('name')->required(),
             Forms\Components\TextInput::make('setter_percent')
                 ->numeric()
-                ->default(0)
+                //->default(0)
                 ->label("Setter percent (%)")
                 ->minValue(0)
                 ->maxValue(100)
                 ->placeholder('Enter 0 - 100'),
             Forms\Components\TextInput::make('setter_per_watt')
-                ->default(0)
+                //->default(0)
                 ->numeric()
                 ->label("Setter per watt"),
             Forms\Components\TextInput::make('M1_percent')
                 ->numeric()
-                ->default(0)
+                //->default(0)
                 ->label("M1 percent (%)")
                 ->minValue(0)
                 ->maxValue(100)
                 ->placeholder('Enter 0 - 100'),
             Forms\Components\TextInput::make('M1_max_payment')
-                ->default(0)
+                //->default(0)
                 ->numeric()
                 ->label("M1 max payment"),
             Forms\Components\Select::make('company_id')
