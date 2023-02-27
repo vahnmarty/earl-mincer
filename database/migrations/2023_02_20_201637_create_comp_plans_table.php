@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('comp_plans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('active');
-            $table->integer('setter_percent');
-            $table->decimal('setter_per_watt', $precision = 10, $scale = 4);
-            $table->integer('M1_percent');
-            $table->integer('M1_max_payment');
+            $table->boolean('active')->default(true);
+            $table->integer('setter_percent')->default(0);
+            $table->decimal('setter_per_watt', $precision = 10, $scale = 4)->default(0);
+            $table->integer('M1_percent')->default(0);
+            $table->integer('M1_max_payment')->default(0);
             $table->bigInteger('company_id')->unsigned()->default(1);
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->timestamps();

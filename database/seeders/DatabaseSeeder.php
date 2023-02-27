@@ -40,6 +40,7 @@ class DatabaseSeeder extends Seeder
         DB::table('project_status_types')->insert(['name' => 'On Hold',     'sort_by' => 6]);
 
         DB::table('companies')->insert(['name' => 'No Company']);
+        DB::table('companies')->insert(['name' => 'Primitive Power']);
 
         DB::table('company_account_types')->insert(['name' => 'Dealer']);
         DB::table('company_account_types')->insert(['name' => 'Developer']);
